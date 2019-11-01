@@ -6,8 +6,9 @@ using namespace std;
 // This principle DO NOT work with clog!   /
 *******************************************/
 
-void iout ( string message = "",  int colorisationFin = 0, int colorisation1 = 4, int colorisation2 = 1) // Ok.
+void iout ( string message = "",  int colorisationFin = 0, int colorisation1 = 1, int colorisation2 = 31 ) // Ok.
 {
+    // Linux:
     // 31 = RED.
     // 1 = bold.
     // 3 = italic.
@@ -15,14 +16,24 @@ void iout ( string message = "",  int colorisationFin = 0, int colorisation1 = 4
     // 0 = normal.
     // 2 effects or color only.
     // 41 = red background...
+
+#ifdef _WIN32
+
+#else
     printf ( "\033[%dm", colorisation1 );
     printf ( "\033[%dm", colorisation2 );
+#endif
     cout << message;  // http://www.cplusplus.com/forum/beginner/108474/
+#ifdef _WIN32
+
+#else
     printf ( "\033[%dm", colorisationFin );
+#endif
 }
 
 void ierr ( string message = "",  int colorisationFin = 0, int colorisation1 = 1, int colorisation2 = 31 ) // Ok.
 {
+    // Linux:
     // 31 = RED.
     // 1 = bold.
     // 3 = italic.
@@ -30,10 +41,18 @@ void ierr ( string message = "",  int colorisationFin = 0, int colorisation1 = 1
     // 0 = normal.
     // 2 effects or color only.
     // 41 = red background...
+#ifdef _WIN32
+
+#else
     printf ( "\033[%dm", colorisation1 );
     printf ( "\033[%dm", colorisation2 );
+#endif
     cerr << message;  // http://www.cplusplus.com/forum/beginner/108474/
+#ifdef _WIN32
+
+#else
     printf ( "\033[%dm", colorisationFin );
+#endif
 }
 
 int main()
