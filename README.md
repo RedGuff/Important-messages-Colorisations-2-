@@ -1,2 +1,2 @@
 BUG of C++:
-This principle DO NOT work with clog!
+This principle DO NOT work with clog with GNU/Linux! 
